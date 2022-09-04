@@ -8,6 +8,7 @@ public class HomeScreen {
 		Scanner sc = new Scanner(System.in);
 		int ch = 0;
 		AdminScreen admin=new AdminScreen();
+		UserScreen user=new UserScreen();
 		do
 		{
 		System.out.println("====== Welcome to Ecommerce Web Application ======");
@@ -21,7 +22,7 @@ public class HomeScreen {
 			admin.login();
 			break;
 		case 2:
-			System.out.println("User Screen ");
+			user.choice();
 			break;
 		case 0:
 			System.out.println("Good Bye...!");
