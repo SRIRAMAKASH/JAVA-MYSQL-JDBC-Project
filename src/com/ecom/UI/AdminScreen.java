@@ -2,12 +2,15 @@ package com.ecom.UI;
 
 import java.util.Scanner;
 
+import com.ecom.dao.AdminDAO;
+
 public class AdminScreen 
 {
 	Scanner sc =new Scanner(System.in);
 	String email,password;
 	boolean status=true;
 	int ch=0;
+	AdminDAO admin=new AdminDAO();
 	
 	public void login()
 	{
@@ -18,7 +21,7 @@ public class AdminScreen
 		password=sc.next();
 		
 		// validate with DB
-		if(status==true)
+		if(admin.Login(email, password)==true)
 		{
 			product();
 		}
