@@ -31,5 +31,27 @@ public class ProductDAO {
 		}
 
 	}
+	
+	public void DeleteProduct(String name) {
+		try {
+			String query = "delete from product where name=?";
+
+			PreparedStatement ps;
+			ps = con.prepareStatement(query);
+
+			ps.setString(1, name);
+
+			int rs = ps.executeUpdate();
+			if (rs == 0) {
+				System.out.println("Product not Deleted");
+			} else {
+				System.out.println("Product deleted");
+			}
+		} catch (SQLException e) {
+			System.out.println(e);
+
+		}
+
+	}
 
 }

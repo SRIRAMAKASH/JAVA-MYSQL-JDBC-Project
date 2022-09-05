@@ -67,7 +67,10 @@ public class AdminScreen
 			System.out.println("Update the Product");
 			break;
 		case 5:
-			System.out.println("Delete the Product");
+			System.out.println("====== Delete Product ======");
+			System.out.println("Enter the name of the product :");
+			name=sc.next();
+			product.DeleteProduct(name);
 			break;
 		case 0:
 			System.out.println(" Thank You...");
