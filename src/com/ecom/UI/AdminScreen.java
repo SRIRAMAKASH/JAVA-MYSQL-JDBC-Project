@@ -21,7 +21,7 @@ public class AdminScreen
 		password=sc.next();
 		
 		// validate with DB
-		if(admin.Login(email, password)==true)
+		if(admin.login(email, password)==true)
 		{
 			product();
 		}

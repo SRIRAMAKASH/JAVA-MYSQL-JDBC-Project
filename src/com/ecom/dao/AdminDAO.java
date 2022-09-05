@@ -13,20 +13,22 @@ public class AdminDAO
 		con=DBConnection.getConnection();
 	}
 	
-	public Boolean Login(String email,String password)
+	public boolean login(String email,String password)
 	{
+		
 		try
 		{
-		String query="select * from admin where email=? and password=?";
-		
-		PreparedStatement ps;
-		ps=con.prepareStatement(query);
-		
-		ps.setString(1, email);
-		ps.setString(2, password);
-		
-		ResultSet rs=ps.executeQuery();
-		return rs.next();
+			String query="select * from admin where email=? and password=? ";
+			
+			PreparedStatement ps;
+			ps=con.prepareStatement(query);
+			
+			ps.setString(1, email);
+			ps.setString(2, password);
+			
+			ResultSet rs=ps.executeQuery();
+			
+			return rs.next();
 		}
 		catch(SQLException e)
 		{

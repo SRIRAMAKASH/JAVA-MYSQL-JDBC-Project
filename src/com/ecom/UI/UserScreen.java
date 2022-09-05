@@ -2,11 +2,16 @@ package com.ecom.UI;
 
 import java.util.Scanner;
 
+import com.ecom.dao.UserDAO;
+import com.ecom.model.User;
+
 public class UserScreen {
 	Scanner sc = new Scanner(System.in);
-	String email, password;
-	boolean status = true;
+	String name,email, password,status;
+	int mobile;
 	int ch = 0;
+	User user;
+	UserDAO users=new UserDAO();
 
 	void choice() {
 		do {
@@ -18,7 +23,7 @@ public class UserScreen {
 
 			switch (ch) {
 			case 1:
-				System.out.println("Register Page");
+				register();
 				break;
 			case 2:
 				login();
@@ -32,6 +37,30 @@ public class UserScreen {
 		} while (ch != 0);
 	}
 	
+	public void register()
+	{
+		System.out.println("====== User Register ======");
+
+		System.out.println("Enter your name :");
+		name=sc.next();
+		System.out.println("Enter your email :");
+		email=sc.next();
+		System.out.println("Enter your Password :");
+		password=sc.next();
+		System.out.println("Enter your mobile :");
+		mobile=sc.nextInt();
+		
+		user=new User(name,email,password,mobile);
+		if(users.register(user)==true)
+		{
+			System.out.println("Register successfully");
+		}
+		else
+		{
+			System.out.println("Register failed");
+		}
+	}
+	
 	public void login()
 	{
 		System.out.println("====== User Login ======");
@@ -40,9 +69,10 @@ public class UserScreen {
 		System.out.println("Enter the Password :");
 		password=sc.next();
 		
-		// validate with DB
-		if(status==true)
+		status=users.login(email, password);
+		if(status!=null)
 		{
+			System.out.println("Welcome "+status);
 			product();
 		}
 		else
