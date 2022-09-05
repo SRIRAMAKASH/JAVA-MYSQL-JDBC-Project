@@ -3,14 +3,17 @@ package com.ecom.UI;
 import java.util.Scanner;
 
 import com.ecom.dao.AdminDAO;
+import com.ecom.dao.ProductDAO;
 
 public class AdminScreen 
 {
 	Scanner sc =new Scanner(System.in);
-	String email,password;
+	String email,password,name;
+	int price;
 	boolean status=true;
 	int ch=0;
 	AdminDAO admin=new AdminDAO();
+	ProductDAO product=new ProductDAO();
 	
 	public void login()
 	{
@@ -47,7 +50,12 @@ public class AdminScreen
 
 		switch (ch) {
 		case 1:
-			System.out.println("Insert the product");
+			System.out.println("====== Insert Product ======");
+			System.out.println("Enter the name :");
+			name=sc.next();
+			System.out.println("Enter the price :");
+			price=sc.nextInt();
+			product.insertProduct(name, price);
 			break;
 		case 2:
 			System.out.println("Select the Product ");
