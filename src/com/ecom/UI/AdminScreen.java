@@ -9,7 +9,7 @@ public class AdminScreen
 {
 	Scanner sc =new Scanner(System.in);
 	String email,password,name;
-	int price;
+	int price,id;
 	boolean status=true;
 	int ch=0;
 	AdminDAO admin=new AdminDAO();
@@ -40,7 +40,7 @@ public class AdminScreen
 		{
 		System.out.println("====== Welcome to Product Of Admin ======");
 		System.out.println("1.Insert the product");
-		System.out.println("2.Select the Product");
+		System.out.println("2.list the Product");
 		System.out.println("3.Search the Product By Id");
 		System.out.println("4.Update the Product");
 		System.out.println("5.Delete the Product");
@@ -58,19 +58,29 @@ public class AdminScreen
 			product.insertProduct(name, price);
 			break;
 		case 2:
-			System.out.println("Select the Product ");
+			product.ListProduct();
 			break;
 		case 3:
-			System.out.println("Search the Product By Id");
+			System.out.println("====== Search Product ======");
+			System.out.println("Enter the id :");
+			id=sc.nextInt();
+			product.searchProduct(id);
 			break;
 		case 4:
-			System.out.println("Update the Product");
+			System.out.println("====== Update Product ======");
+			System.out.println("Enter the name :");
+			name=sc.next();
+			System.out.println("Enter the price :");
+			price=sc.nextInt();
+			System.out.println("Enter the id :");
+			id=sc.nextInt();
+			product.updateProduct(name, price,id);
 			break;
 		case 5:
 			System.out.println("====== Delete Product ======");
 			System.out.println("Enter the name of the product :");
 			name=sc.next();
-			product.DeleteProduct(name);
+			product.deleteProduct(name);
 			break;
 		case 0:
 			System.out.println(" Thank You...");
